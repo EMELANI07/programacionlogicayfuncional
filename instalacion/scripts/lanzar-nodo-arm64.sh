@@ -102,9 +102,12 @@ DESC="Programacion Logica y Funcional - ARM64"
 
 # Arquitectura: ARM64 (Graviton). Los 6 lenguajes del curso tienen soporte
 # aarch64 completo en Ubuntu 24.04 y t4g cuesta ~20% menos que t3.
-#   t4g.micro  = 1 GiB  -> Prolog/Erlang/Elixir/OCaml OK; Haskell/Clojure solo REPL
-#   t4g.small  = 2 GiB  -> recomendado si el nodo lo comparten varios o se compila Haskell
-INSTANCE_TYPE="${INSTANCE_TYPE:-t4g.micro}"
+#   t4g.micro  = 1 GiB  -> Prolog/Erlang/Elixir/OCaml OK; OTP 26 solo compila con swap
+#   t4g.medium = 4 GiB  -> compila OTP 26 / GHC sin swapping, ~15 min
+#   t4g.large  = 8 GiB  -> holgado para ghcup+opam+BEAM y nodo compartido (default)
+# El Learner Lab suele permitir hasta t4g.large; si run-instances devuelve
+# VcpuLimitExceeded / UnauthorizedOperation, relanza con INSTANCE_TYPE=t4g.medium.
+INSTANCE_TYPE="${INSTANCE_TYPE:-t4g.large}"
 
 # Etiqueta (tag "Name") con la que se ve la VM en la consola EC2. SIN espacios:
 # el valor no queda con comillas raras y es fácil de filtrar por CLI. EC2 no pone
@@ -115,8 +118,9 @@ INSTANCE_NAME="${INSTANCE_NAME:-Curso-PLF}"
 TAGS="{Key=Name,Value=$INSTANCE_NAME},{Key=Curso,Value=ISC-2006-PLF},{Key=Proyecto,Value=programacion-logica-y-funcional}"
 
 # Disco root y swap (ghcup ~5GB + opam ~2GB + JVM/BEAM no caben en los 8 GB por defecto)
+# Con t4g.large (8 GiB RAM) 2 GiB de swap bastan como colchón; súbelo a 4 en t4g.micro.
 ROOT_GB="${ROOT_GB:-30}"
-SWAP_GB="${SWAP_GB:-4}"
+SWAP_GB="${SWAP_GB:-2}"
 
 echo "   INSTANCE_TYPE = $INSTANCE_TYPE"
 echo "   INSTANCE_NAME = $INSTANCE_NAME"
