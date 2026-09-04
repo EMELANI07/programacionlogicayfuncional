@@ -128,11 +128,11 @@ La inmutabilidad también puede encontrarse en aplicaciones industriales. Un eje
 
 La inmutabilidad es un principio central de la programación funcional porque permite representar los cambios mediante nuevos valores en lugar de modificar directamente los existentes. Su principal beneficio es que reduce los efectos secundarios y facilita el razonamiento sobre el comportamiento de un programa.
 
-Para el programador, trabajar con datos inmutables implica adoptar una forma diferente de pensar: las operaciones se diseñan como transformaciones, el estado se hace explícito y las estructuras pueden conservar versiones anteriores. Este enfoque resulta especialmente útil en la concurrencia, ya que disminuye los problemas derivados del estado compartido y de las modificaciones inesperadas.
+Para un programador, es como trabajar con datos inmutables que implican adoptar una forma diferente de pensar, un ejemplo es: las operaciones se diseñan como transformaciones, el estado se hace explícito y las estructuras pueden conservar versiones anteriores. Este enfoque resulta útil en la concurrencia, ya que disminuye los problemas derivados del estado compartido y de las modificaciones inesperadas.
 
-No obstante, la inmutabilidad también presenta desafíos relacionados con el consumo de memoria y el rendimiento. Por esta razón, no debe considerarse una regla absoluta, sino una herramienta de diseño que debe utilizarse de acuerdo con las características del problema. Los lenguajes funcionales modernos demuestran que es posible combinar datos inmutables con mecanismos eficientes de persistencia, compartición estructural y manejo controlado del estado.
+Aunque, la inmutabilidad también puede presentar desafíos relacionados con el consumo de memoria y el rendimiento. Pero por esta razón, no se debe considerar una regla absoluta, sino mas como una herramienta de diseño que se debe utilizar de acuerdo con las características del problema. Los lenguajes funcionales modernos demuestran que es posible combinar datos inmutables con mecanismos eficientes de persistencia, compartición estructural y un manejo controlado del estado.
 
-En mi opinión, la aportación más importante de la inmutabilidad es que obliga a expresar los cambios de manera más clara. En lugar de depender de modificaciones implícitas en distintas partes del programa, cada transformación puede analizarse como una relación entre valores. Esto no solo favorece la corrección del software, sino que también facilita su mantenimiento y su comprensión.
+Para mi, la aportación más importante que tiene la inmutabilidad es que obliga a expresar los cambios de manera más clara, en lugar de depender de modificaciones implícitas en distintas partes del programa, cada transformación puede analizarse como una relación entre valores. Esto no solo puede favorecer la corrección del software, sino que facilita su mantenimiento y su comprensión.
 
 ## Bibliografía
 
